@@ -436,7 +436,7 @@ class HabitatBaselinesConfig(HabitatBaselinesBaseConfig):
     force_blind_policy: bool = False
     verbose: bool = True
     # Creates the vectorized environment.
-    vector_env_factory: VectorEnvFactoryConfig = VectorEnvFactoryConfig()
+    vector_env_factory: VectorEnvFactoryConfig = field(default_factory=VectorEnvFactoryConfig)
     eval_keys_to_include_in_name: List[str] = field(default_factory=list)
     # For our use case, the CPU side things are mainly memory copies
     # and nothing of substantive compute. PyTorch has been making
