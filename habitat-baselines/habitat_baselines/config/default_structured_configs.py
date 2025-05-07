@@ -277,7 +277,7 @@ class PolicyConfig(HabitatBaselinesBaseConfig):
     action_distribution_type: str = "categorical"  # or 'gaussian'
     # If the list is empty, all keys will be included.
     # For gaussian action distribution:
-    action_dist: ActionDistributionConfig = ActionDistributionConfig()
+    action_dist: ActionDistributionConfig = field(default_factory=ActionDistributionConfig)
     obs_transforms: Dict[str, ObsTransformConfig] = field(default_factory=dict)
     hierarchical_policy: HierarchicalPolicyConfig = MISSING
 
