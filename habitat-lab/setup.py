@@ -8,6 +8,25 @@
 from setuptools import find_packages, setup
 
 
+# Keep runtime dependencies inline so local path-package metadata changes are
+# visible to resolvers like uv without depending on an external file.
+INSTALL_REQUIRES = [
+    "attrs>=19.1.0",
+    "gymnasium>=0.29.1",
+    "hydra-core>=1.2.0",
+    "imageio-ffmpeg>=0.2.0",
+    "imageio>=2.2.0",
+    "numba>=0.44.0",
+    "numpy-quaternion>=2019.3.18.14.33.20",
+    "numpy>=1.26.4",
+    "omegaconf>=2.2.3",
+    "opencv-python>=3.3.0",
+    "pickle5; python_version < '3.8'",
+    "scipy>=1.10.1",
+    "tqdm>=4.0.0",
+]
+
+
 def read(file_path, *args, **kwargs):
     with open(file_path, *args, **kwargs) as f:
         content = f.read()
@@ -55,7 +74,7 @@ For documentation refer [here](https://aihabitat.org/docs/habitat-lab/).
 if __name__ == "__main__":
     setup(
         name="habitat-lab",
-        install_requires=read("requirements.txt").strip().split("\n"),
+        install_requires=INSTALL_REQUIRES,
         packages=find_packages(),
         version=get_package_version(),
         include_package_data=True,
